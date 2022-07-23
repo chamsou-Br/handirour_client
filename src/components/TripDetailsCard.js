@@ -7,6 +7,7 @@ import {useNavigation} from '@react-navigation/native';
 import HotelDetailsCard from './HotelDetailsCard';
 import PointFortsCard from './PointFortsCard';
 import {PLACES, TOP_PLACES, CATEGORY, accibilities, points} from '../data';
+// import ButtonComponent from 'react-native-button-component';
 
 const TripDetailsCard = ({trip}) => {
   return (
@@ -23,6 +24,7 @@ const TripDetailsCard = ({trip}) => {
         <PointFortsCard hotel={trip} acc={points} acci={trip.points} />
         <Text style={styles.title}>ACCIBILITIES</Text>
         <PointFortsCard hotel={trip} acc={accibilities} acci={trip.accibilities} />
+        {/* <ButtonComponent text='Reserver'></ButtonComponent> */}
       </Animatable.View>
     </View>
   );

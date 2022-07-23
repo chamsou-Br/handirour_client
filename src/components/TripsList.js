@@ -162,5 +162,4 @@ const styles = StyleSheet.create({
     color: 'white',
   },
 });
-// 0664571928akrammezaache
 export default TripsList;

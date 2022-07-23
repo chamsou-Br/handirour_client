@@ -23,9 +23,10 @@ const PointFortsCard = ({hotel, acc, acci}) => {
                             name={item.icon}
                             size={50}
                             style={{
-                                color: 'cyan',
-                                borderWidth: 2,
-                                borderColor: 'cyan',
+                                color: 'white',
+                                borderWidth: 0,
+                                borderColor: '#3399ff',
+                                backgroundColor: '#3399ff',
                                 borderRadius: 150,
                                 padding: 8,
                                 margin: 10,

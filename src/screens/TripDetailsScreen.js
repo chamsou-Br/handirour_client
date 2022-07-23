@@ -21,6 +21,7 @@ const TripDetailsScreen = ({navigation, route}) => {
             style={{
               color: colors.light,
             }}
+            onPress = {() => {navigation.route.goBack}}
         />
         <Icon
           // icon={name}
