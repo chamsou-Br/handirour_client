@@ -12,7 +12,6 @@ import { SearchBar } from '@rneui/themed';
 import Icon from 'react-native-vector-icons/Ionicons';
 import Categories from '../components/Category';
 
-import Drawer from 'react-native-drawer'
 
 const HomeScreen = () => {
   const [search, setSearch] = useState("");
