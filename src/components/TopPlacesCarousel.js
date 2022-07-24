@@ -74,19 +74,21 @@ const styles = StyleSheet.create({
     zIndex: 1,
   },
   imageBox: {
-    width: CARD_WIDTH,
-    height: CARD_HEIGHT,
+    width: CARD_WIDTH - 20,
+    height: CARD_HEIGHT - 20,
     borderRadius: sizes.radius,
     overflow: 'hidden',
   },
   image: {
-    width: CARD_WIDTH,
-    height: CARD_HEIGHT,
+    width: CARD_WIDTH - 20,
+    height: CARD_HEIGHT - 20,
     resizeMode: 'cover',
+    justifyContent: 'center',
+    alignSelf: 'center'
   },
   titleBox: {
     position: 'absolute',
-    top: CARD_HEIGHT - 80,
+    top: CARD_HEIGHT - 80, 
     left: 16,
   },
   title: {

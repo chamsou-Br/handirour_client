@@ -12,6 +12,8 @@ import { SearchBar } from '@rneui/themed';
 import Icon from 'react-native-vector-icons/Ionicons';
 import Categories from '../components/Category';
 
+import Drawer from 'react-native-drawer'
+
 const HomeScreen = () => {
   const [search, setSearch] = useState("");
   
@@ -19,10 +21,8 @@ const HomeScreen = () => {
     setSearch(search);
   };
 
-
   return (
     <View style={styles.container}>
-      
       <View style={styles.head}>
         <Icon
             // icon={name}
@@ -94,15 +94,16 @@ const styles = StyleSheet.create({
     borderTopRightRadius: 30,
     borderTopLeftRadius: 30,
     top: 20,
-
+    borderWidth: 2,
   },
   container: {
     flex: 1,
     backgroundColor: '#3399ff',
   },
-  seeAll: {
-    color: colors.primary,
-  },
+  // seeAll: {
+  //   color: colors.primary,
+  //   backgroundColor: 'red',
+  // },
   head: {
     flexDirection: 'row-reverse',
     justifyContent: 'space-between',

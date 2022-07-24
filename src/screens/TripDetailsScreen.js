@@ -13,29 +13,31 @@ const TripDetailsScreen = ({navigation, route}) => {
   const slides = [trip.image, ...trip.gallery];
   return (
     <View style={styles.container}>
-        <View style={styles.head}>
-        <Icon
-            // icon={name}
-            name='log-out-outline'
-            size={22}
-            style={{
-              color: colors.light,
-            }}
-            onPress = {() => {navigation.route.goBack}}
-        />
+      <View style={styles.head}>
         <Icon
           // icon={name}
-          name='notifications-outline'
-          size={22}
+          name='arrow-back-circle-outline'
+          size={25}
           style={{
             color: colors.light,
           }}
+          onPress={() => {
+            navigation.goBack();
+          }}
+        />
+        <Icon
+            // icon={name}
+            name='notifications'
+            size={25}
+            style={{
+              color: colors.light,
+            }}
         />
       </View>
 
       <ScrollView style={styles.scroll} showsVerticalScrollIndicator={false}>
         <React.Fragment>
-          <Text style={{top: 5, textAlign:'left', left: 30, fontSize: sizes.h3,fontSize: sizes.h3, fontWeight: 'bold', color: colors.black,}}>{trip.title}</Text>
+          <Text style={{top: 5, textAlign:'left', fontSize: sizes.h3, left: 20, fontSize: sizes.h3, fontWeight: 'bold', color: colors.black,}}>{trip.title}</Text>
           <TripDetailsCarousel slides={slides} id={trip.id} />
           <TripDetailsCard trip={trip} />
         </React.Fragment>
@@ -65,7 +67,6 @@ const styles = StyleSheet.create({
   },
   imageBox: {
     borderRadius: sizes.radius,
-    overflow: 'hidden',
   },
   image: {
     width: sizes.width,
@@ -83,10 +84,12 @@ const styles = StyleSheet.create({
     top: 20,
   },
   head: {
-    flexDirection: 'row-reverse',
-    justifyContent: 'space-around',
+    flexDirection: 'row',
+    justifyContent: 'space-between',
     alignItems: 'center',
+    alignSelf: 'center',
     height: 50,
+    width: '90%',
   },
 });
 
