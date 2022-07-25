@@ -1,29 +1,32 @@
 import React from 'react'
-import { Dimensions, StyleSheet, Text, View } from 'react-native'
+import { Dimensions, Pressable, StyleSheet, Text, View } from 'react-native'
 import { TextInput } from 'react-native-gesture-handler'
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 
 
-function InputRegistre({label,placeHolder,icon,value,onChange}) {
+
+function InputRegistre({label,placeHolder,icon,value,onChange,disabled}) {
+
   return (
-    <View style={Styles.container}>
+    <Pressable style={Styles.container} onPress={()=>disabled ? onChange() : null}>
     <Text style={Styles.label} >{label}</Text>
-    <View style={Styles.inputContainer}>
+    <View style={Styles.inputContainer} >
        <TextInput style={Styles.Input}
-       value={value}
+       value={value.toString()}
+       editable={!disabled}
        onChangeText={(v) => onChange(v)}
        placeholder={placeHolder}
        placeholderTextColor="#000000BB" 
         />
         {icon ? <MaterialCommunityIcons name={icon} color="#000000AA" size={24}  /> : null }
     </View>
-</View>
+</Pressable>
   )
 }
 
 const Styles = StyleSheet.create({
     container : {
-        marginTop : 20
+        marginTop : 10
     },
     inputContainer : {
         display : 'flex',

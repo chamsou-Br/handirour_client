@@ -29,7 +29,7 @@ const Styles = StyleSheet.create({
         display : 'flex',
         borderBottomWidth : 0.8,
         borderColor : "#00000055",
-        marginTop : 20,
+        marginTop : 10,
         
     },
     label : {
