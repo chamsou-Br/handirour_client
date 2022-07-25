@@ -18,8 +18,15 @@ import DateTimePicker from "@react-native-community/datetimepicker";
 function RegisterScreen() {
 
   // state of registe Form
+  const [nom, setnom] = useState("")
+  const [prenom, setprenom] = useState("")
   const [date, setDate] = useState(new Date());
   const [dateDeNaissance , setDateDenaissance] = useState("12-12-2002")
+  const [genre, setgenre] = useState("Homme")
+  const [wilaya, setWilaya] = useState("sétif")
+  const [email, setemail] = useState("")
+  const [password, setpassword] = useState("********")
+  const [typeDincapacite, settypeDincapacite] = useState("Mobilité/Physique")
   const [showDatePicker, setShowDatepicker] = useState(false);
   const [picture, setPicture] = useState(null)
   const [path , setPath] = useState("image.jpg")
@@ -57,16 +64,16 @@ function RegisterScreen() {
       <ScrollView>
         <View style={Styles.formContainer}>
           <InputRegistre
-            value={""}
+            value={nom}
             label="Nom"
             placeHolder={"nom"}
-            onChange={() => {}}
+            onChange={(v) => {setnom(v)}}
           />
           <InputRegistre
-            value={""}
+            value={prenom}
             label="Prenom"
             placeHolder={"prenom"}
-            onChange={() => {}}
+            onChange={(v) => {setprenom(v)}}
           />
           <InputRegistre
             disabled={true}
@@ -77,13 +84,13 @@ function RegisterScreen() {
               setShowDatepicker(true);
             }}
           />
-          <SelectInput value={"Male"} label="Genre" onChange={() => {}} />
-          <SelectInput value={"Setif"} label="Wilaya" onChange={() => {}} />
+          <SelectInput value={genre} label="Genre" onChange={() => {}} />
+          <SelectInput value={wilaya} label="Wilaya" onChange={() => {}} />
           <InputRegistre
-            value={""}
+            value={email}
             label="Email"
             placeHolder={"exemple@gmail.com"}
-            onChange={() => {}}
+            onChange={(v) => {setemail(v)}}
           />
           <InputRegistre
             value={path}
@@ -93,10 +100,10 @@ function RegisterScreen() {
             placeHolder={""}
             onChange={() => {getImageFromgallerie()}}
           />
-          <SelectInput
-            value={"Mobilité/Physique"}
+            <SelectInput
+            value={typeDincapacite}
             label="Type d'incapacité"
-            onChange={() => {}}
+            onChange={(v) => {settypeDincapacite(v)}}
           />
           {showDatePicker && (
             <DateTimePicker
@@ -110,10 +117,11 @@ function RegisterScreen() {
             />
           )}
 
+
           <SelectInput
-            value={"Mobilité/Physique"}
-            label="Type d'incapacité"
-            onChange={() => {}}
+            value={password}
+            label="mot de pass"
+            onChange={(v) => {setpassword(v)}}
           />
 
           <TouchableOpacity style={Styles.buttonContainer}>
