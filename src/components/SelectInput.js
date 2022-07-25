@@ -2,7 +2,8 @@ import { Select } from "native-base";
 import React from "react";
 import { Dimensions, StyleSheet, Text, View } from "react-native";
 
-function SelectInput({value ,label, onChange}) {
+function SelectInput({value ,label, onChange,items}) {
+
   return (
     <View style={Styles.inputContainer}>
       <Text style={Styles.label} >{label}</Text>
@@ -18,8 +19,12 @@ function SelectInput({value ,label, onChange}) {
         placeholderTextColor="#000000BB" 
         onValueChange={(v) => onChange(v)}
       >
-        <Select.Item label="Male" value="Male" />
-        <Select.Item label="Female" value="Female" />
+        
+        {items.map((item,index) => {
+          return (
+            <Select.Item label={item} value={item} key={index} />
+          )
+        })}
       </Select>
     </View>
   );
@@ -29,7 +34,7 @@ const Styles = StyleSheet.create({
         display : 'flex',
         borderBottomWidth : 0.8,
         borderColor : "#00000055",
-        marginTop : 10,
+        marginTop : 8,
         
     },
     label : {

@@ -21,15 +21,15 @@ function RegisterScreen() {
   const [nom, setnom] = useState("")
   const [prenom, setprenom] = useState("")
   const [date, setDate] = useState(new Date());
-  const [dateDeNaissance , setDateDenaissance] = useState("12-12-2002")
+  const [dateDeNaissance , setDateDenaissance] = useState("")
   const [genre, setgenre] = useState("Homme")
-  const [wilaya, setWilaya] = useState("sétif")
+  const [wilaya, setWilaya] = useState("Sétif")
   const [email, setemail] = useState("")
-  const [password, setpassword] = useState("********")
+  const [password, setpassword] = useState("")
   const [typeDincapacite, settypeDincapacite] = useState("Mobilité/Physique")
   const [showDatePicker, setShowDatepicker] = useState(false);
   const [picture, setPicture] = useState(null)
-  const [path , setPath] = useState("image.jpg")
+  const [path , setPath] = useState("")
 
   // function to get picture
   const getImageFromgallerie = async () => {
@@ -79,13 +79,13 @@ function RegisterScreen() {
             disabled={true}
             value={dateDeNaissance}
             label="Date de naissance"
-            placeHolder={"12/12/2022"}
+            placeHolder={"2022-12-12"}
             onChange={() => {
               setShowDatepicker(true);
             }}
           />
-          <SelectInput value={genre} label="Genre" onChange={() => {}} />
-          <SelectInput value={wilaya} label="Wilaya" onChange={() => {}} />
+          <SelectInput items={['Male',"Female"]} value={genre} label="Genre" onChange={() => {}} />
+          <SelectInput items={["Alger","Sétif","Oran","Annaba",'Jijel']} value={wilaya} label="Wilaya" onChange={() => {}} />
           <InputRegistre
             value={email}
             label="Email"
@@ -97,11 +97,12 @@ function RegisterScreen() {
             disabled={true}
             icon={"qrcode"}
             label="Handecape"
-            placeHolder={""}
+            placeHolder={"image.jpg"}
             onChange={() => {getImageFromgallerie()}}
           />
             <SelectInput
             value={typeDincapacite}
+            items={["Mobilité/Physique"]}
             label="Type d'incapacité"
             onChange={(v) => {settypeDincapacite(v)}}
           />
@@ -118,10 +119,11 @@ function RegisterScreen() {
           )}
 
 
-          <SelectInput
+          <InputRegistre
             value={password}
             label="mot de pass"
             onChange={(v) => {setpassword(v)}}
+            placeHolder='********'
           />
 
           <TouchableOpacity style={Styles.buttonContainer}>
@@ -136,16 +138,17 @@ function RegisterScreen() {
 const Styles = StyleSheet.create({
   container: {
     backgroundColor: "#859DFF",
+    height:  Dimensions.get('screen').height
   },
   formContainer: {
     display: "flex",
+    marginTop : 80,
     minHeight: Dimensions.get("window").height,
     alignItems: "center",
     width: Dimensions.get("screen").width,
     backgroundColor: "#FFF",
     borderTopLeftRadius: 20,
     borderTopRightRadius: 20,
-    marginTop: 80,
     paddingBottom :40,
   },
   header: {

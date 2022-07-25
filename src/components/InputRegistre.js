@@ -26,8 +26,13 @@ function InputRegistre({label,placeHolder,icon,value,onChange,disabled}) {
 
 const Styles = StyleSheet.create({
     container : {
-        marginTop : 10
+        marginTop : 8
     },
+    errText : {
+        color : "red",
+        letterSpacing : 1.1,
+        fontSize : 12
+    },  
     inputContainer : {
         display : 'flex',
         flexDirection : "row",
