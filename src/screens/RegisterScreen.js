@@ -19,16 +19,25 @@ function RegisterScreen() {
 
   // state of registe Form
   const [nom, setnom] = useState("")
+  const [nomErr, setnomErr] = useState('')
   const [prenom, setprenom] = useState("")
+  const [prenomErr, setprenomErr] = useState("")
   const [date, setDate] = useState(new Date());
   const [dateDeNaissance , setDateDenaissance] = useState("")
+  const [dateDeNaissanceErr, setdateDeNaissanceErr] = useState('')
   const [genre, setgenre] = useState("Homme")
+  const [genreErr, setgenreErr] = useState("")
   const [wilaya, setWilaya] = useState("Sétif")
+  const [wilayaErr, setwilayaErr] = useState("")
   const [email, setemail] = useState("")
+  const [emailErr, setemailErr] = useState("")
   const [password, setpassword] = useState("")
+  const [passwordErr , setpasswordErr ] = useState('')
   const [typeDincapacite, settypeDincapacite] = useState("Mobilité/Physique")
+  const [typeIncapaciteErr, settypeIncapaciteErr] = useState("")
   const [showDatePicker, setShowDatepicker] = useState(false);
   const [picture, setPicture] = useState(null)
+  const [pictureErr, setpictureErr] = useState("")
   const [path , setPath] = useState("")
 
   // function to get picture
@@ -65,12 +74,14 @@ function RegisterScreen() {
         <View style={Styles.formContainer}>
           <InputRegistre
             value={nom}
+            err={nomErr}
             label="Nom"
             placeHolder={"nom"}
             onChange={(v) => {setnom(v)}}
           />
           <InputRegistre
             value={prenom}
+            err={prenomErr}
             label="Prenom"
             placeHolder={"prenom"}
             onChange={(v) => {setprenom(v)}}
@@ -78,6 +89,7 @@ function RegisterScreen() {
           <InputRegistre
             disabled={true}
             value={dateDeNaissance}
+            err={dateDeNaissanceErr}
             label="Date de naissance"
             placeHolder={"2022-12-12"}
             onChange={() => {
@@ -88,12 +100,14 @@ function RegisterScreen() {
           <SelectInput items={["Alger","Sétif","Oran","Annaba",'Jijel']} value={wilaya} label="Wilaya" onChange={() => {}} />
           <InputRegistre
             value={email}
+            err={emailErr}
             label="Email"
             placeHolder={"exemple@gmail.com"}
             onChange={(v) => {setemail(v)}}
           />
           <InputRegistre
             value={path}
+            err={pictureErr}
             disabled={true}
             icon={"qrcode"}
             label="Handecape"
@@ -102,6 +116,7 @@ function RegisterScreen() {
           />
             <SelectInput
             value={typeDincapacite}
+            err={typeIncapaciteErr}
             items={["Mobilité/Physique"]}
             label="Type d'incapacité"
             onChange={(v) => {settypeDincapacite(v)}}
@@ -121,6 +136,7 @@ function RegisterScreen() {
 
           <InputRegistre
             value={password}
+            err={passwordErr}
             label="mot de pass"
             onChange={(v) => {setpassword(v)}}
             placeHolder='********'

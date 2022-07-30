@@ -5,14 +5,14 @@ import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityI
 
 
 
-function InputRegistre({label,placeHolder,icon,value,onChange,disabled}) {
+function InputRegistre({label,placeHolder,icon,value,onChange,disabled,err}) {
 
   return (
     <Pressable style={Styles.container} onPress={()=>disabled ? onChange() : null}>
     <Text style={Styles.label} >{label}</Text>
-    <View style={Styles.inputContainer} >
+    <View style={[Styles.inputContainer,{borderColor : err ? "red"  : "#00000055" }]} >
        <TextInput style={Styles.Input}
-       value={value.toString()}
+       value={err ? err : value.toString()}
        editable={!disabled}
        onChangeText={(v) => onChange(v)}
        placeholder={placeHolder}
@@ -37,7 +37,6 @@ const Styles = StyleSheet.create({
         display : 'flex',
         flexDirection : "row",
         borderBottomWidth : 0.8,
-        borderColor : "#00000055",
         width:  Dimensions.get("screen").width * 0.75
     },
     label : {

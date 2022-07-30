@@ -2,13 +2,13 @@ import { Select } from "native-base";
 import React from "react";
 import { Dimensions, StyleSheet, Text, View } from "react-native";
 
-function SelectInput({value ,label, onChange,items}) {
+function SelectInput({value ,label, onChange,items,err}) {
 
   return (
-    <View style={Styles.inputContainer}>
+    <View style={[Styles.inputContainer,{borderColor : err ? "red" : "#00000055" }]}>
       <Text style={Styles.label} >{label}</Text>
       <Select
-        defaultValue={value}
+        defaultValue={err ? err : value}
         borderWidth={0}
         color={"#000000BB"}
         paddingLeft={-0.5}
@@ -33,7 +33,6 @@ const Styles = StyleSheet.create({
     inputContainer : {
         display : 'flex',
         borderBottomWidth : 0.8,
-        borderColor : "#00000055",
         marginTop : 8,
         
     },
