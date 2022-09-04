@@ -12,6 +12,7 @@ import {
 } from "react-native";
 import bg from "../../assets/register1.png";
 import logo from "../../assets/logo.png";
+import axios from "axios";
 
 function LoginScreeen() {
   const [email, setEmail] = useState("");
@@ -20,7 +21,20 @@ function LoginScreeen() {
   const [passwordErr , setPasswordErr] = useState("")
 
   // login function
-  const _onLigin = () => {};
+  const _onLogin = async() => {
+    const res = await axios.post("http://192.168.1.129:5000/Auth/login",{
+      email : email , 
+      password : password
+    })
+    if (res.data.err) {
+      setEmailErr(res.data.err.email) 
+      setPasswordErr(res.data.err.password)
+      setEmail("")
+      setPassword("")
+    }else {
+      console.log(res.data)
+    }
+  };
 
   return (
     <ScrollView >
@@ -38,6 +52,10 @@ function LoginScreeen() {
               style={Styles.Input}
               value={email}
               placeholder='Exemple@gmail.com'
+              onFocus={()=> {
+                setEmailErr('')
+                setPasswordErr("")
+              }}
               onChangeText={(v) => setEmail(v)}
             />
 
@@ -49,12 +67,16 @@ function LoginScreeen() {
               placeholder='********'
               secureTextEntry
               value={password}
+              onFocus={()=> {
+                setPasswordErr("")
+                setEmailErr('')
+              }}
               onChangeText={(v) => setPassword(v)}
             />
 
           </View>
           <Text style={Styles.TextErr}>{passwordErr}</Text>
-          <TouchableOpacity style={Styles.buttonContainer}>
+          <TouchableOpacity onPress={()=> _onLogin()} style={Styles.buttonContainer}>
             <Text style={Styles.textButton}>Login</Text>
           </TouchableOpacity>
         </View>
