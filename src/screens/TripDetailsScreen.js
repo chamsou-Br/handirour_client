@@ -37,7 +37,7 @@ const TripDetailsScreen = ({navigation, route}) => {
 
       <ScrollView style={styles.scroll} showsVerticalScrollIndicator={false}>
         <React.Fragment>
-          <Text style={{top: 5, textAlign:'left', fontSize: sizes.h3, left: 20, fontSize: sizes.h3, fontWeight: 'bold', color: colors.black,}}>{trip.title}</Text>
+          {/* <Text style={{top: 5, textAlign:'left', fontSize: sizes.h3, left: 20, fontSize: sizes.h3, fontWeight: 'bold', color: colors.black,}}>{trip.title}</Text> */}
           <TripDetailsCarousel slides={slides} id={trip.id} />
           <TripDetailsCard trip={trip} />
         </React.Fragment>
