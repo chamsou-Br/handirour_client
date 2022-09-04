@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import {View, StyleSheet, Text, ScrollView} from 'react-native';
 import {colors, sizes, spacing} from '../constants/theme';
 import Icon from 'react-native-vector-icons/Ionicons';
@@ -9,6 +9,9 @@ import TripDetailsCarousel from '../components/TripDetailsCarousel';
 
 const TripDetailsScreen = ({navigation, route}) => {
   const insets = useSafeAreaInsets();
+  useEffect(()=> {
+    console.log('kkkkkkkkkkkkkkkkkkkkkkk')
+  },[])
   const {trip} = route.params;
   const slides = [trip.image, ...trip.gallery];
   return (
@@ -46,19 +49,12 @@ const TripDetailsScreen = ({navigation, route}) => {
   );
 };
 
-TripDetailsScreen.sharedElements = route => {
-  const {trip} = route.params;
-  return [
-    {
-      id: `trip.${trip.id}.image`,
-    },
-  ];
-};
+
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#3399ff',
+    backgroundColor: '#859DFF',
   },
   scroll: {
     borderTopRightRadius: 40,

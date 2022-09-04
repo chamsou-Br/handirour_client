@@ -1,4 +1,4 @@
-import React, { useState }  from 'react';
+import React, { useEffect, useState }  from 'react';
 import {View, StyleSheet, ScrollView} from 'react-native';
 import {colors, shadow, sizes, spacing} from '../constants/theme';
 import MainHeader from '../components/MainHeader';
@@ -13,22 +13,26 @@ import Icon from 'react-native-vector-icons/Ionicons';
 import Categories from '../components/Category';
 
 
-const HomeScreen = () => {
+const HomeScreen = ({route}) => {
   const [search, setSearch] = useState("");
   
   const updateSearch = (search) => {
     setSearch(search);
   };
 
+
   return (
     <View style={styles.container}>
       <View style={styles.head}>
+        <View style={styles.iconContainer}>
         <Icon
             // icon={name}
             name='log-out-outline'
+            onPress={()=>route.params.setAuth(false)}
             size={22}
             style={{
               color: colors.light,
+              marginLeft : 20
             }}
         />
         <Icon
@@ -37,15 +41,16 @@ const HomeScreen = () => {
           size={22}
           style={{
             color: colors.light,
+            marginLeft : 20
           }}
-        />
-
-        
+        /> 
+        </View>
+       
         <SearchBar
           platform="android"
-          containerStyle={{right: 10, borderRadius: 80, alignSelf: 'center', top: 10, width: sizes.width - 70, height: 50, justifyContent: 'center'}}
-          inputContainerStyle={{}}
-          inputStyle={{}}
+          containerStyle={{right: 10, borderRadius: 50, alignSelf: 'center', top: 10, width: sizes.width - 140, height: 50, justifyContent: 'center'}}
+          inputContainerStyle={{}}  
+          inputStyle={{fontSize : 16 }}
           leftIconContainerStyle={{}}
           rightIconContainerStyle={{}}
           loadingProps={{}}
@@ -62,6 +67,7 @@ const HomeScreen = () => {
         />
       </View>
       
+
       <ScrollView style={styles.scroll} showsVerticalScrollIndicator={false}>
         <React.Fragment>
           <TopPlacesCarousel list={TOP_PLACES} />
@@ -81,32 +87,41 @@ const HomeScreen = () => {
             onPress={() => {}}
           />
           <TripsList list={TOP_PLACES} />
+          <View style={{height : 50}}></View>
         </React.Fragment>
       </ScrollView>
     </View>
   ); 
 };
 
+
 const styles = StyleSheet.create({
   scroll: {
+    paddingTop : 10,
     backgroundColor: colors.light,
     borderTopRightRadius: 30,
     borderTopLeftRadius: 30,
     top: 20,
-    borderWidth: 2,
   },
   container: {
     flex: 1,
-    backgroundColor: '#3399ff',
+    backgroundColor: '#859DFF',
   },
-  // seeAll: {
-  //   color: colors.primary,
-  //   backgroundColor: 'red',
-  // },
   head: {
     flexDirection: 'row-reverse',
-    justifyContent: 'space-between',
+    display : 'flex',
+    justifyContent: "space-between",
+    paddingHorizontal : 15,
+    alignItems : 'center'
   },
+  iconContainer : {
+    display : "flex",
+    flexDirection :'row',
+    height : 50,
+    alignItems : 'center',
+    top : 10,
+    justifyContent : "center"
+  }
 });
 
 export default HomeScreen;

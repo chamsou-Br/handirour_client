@@ -1,5 +1,5 @@
 import { BackgroundImage } from "@rneui/base";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
   Dimensions,
   Platform,
@@ -18,8 +18,9 @@ import * as ImagePicker from "expo-image-picker";
 import DateTimePicker from "@react-native-community/datetimepicker";
 import axios , {Axios, toFormData} from "axios";
 import LinkBack from "../data/Backend";
+import { useNavigation } from "@react-navigation/native";
 
-function RegisterScreen() {
+function RegisterScreen({route}) {
   // state of registe Form
   const [nom, setnom] = useState("");
   const [nomErr, setnomErr] = useState("");
@@ -42,8 +43,11 @@ function RegisterScreen() {
   const [picture, setPicture] = useState(null);
   const [pictureErr, setpictureErr] = useState("");
   const [path, setPath] = useState("");
+  const navigation = useNavigation()
 
-
+  useEffect(()=>{
+    console.log(route.params.isAuth)
+  },[])
 
   
   // function to get picture
@@ -227,11 +231,16 @@ function RegisterScreen() {
           />
 
           <TouchableOpacity
-            onPress={() => _onRegister()}
+          onPress={()=> route.params.setAuth(true)}
+            // onPress={() => _onRegister()}
             style={Styles.buttonContainer}
           >
             <Text style={Styles.textButton}>Login</Text>
           </TouchableOpacity>
+          <Pressable onPress={()=> navigation.navigate('LoginScreen') }>
+          <Text style={Styles.login}>vous aves un compte !</Text>
+          </Pressable>
+          
         </View>
       </ScrollView>
     </ScrollView>
@@ -245,7 +254,7 @@ const Styles = StyleSheet.create({
   },
   formContainer: {
     display: "flex",
-    marginTop: 80,
+    marginTop: 40,
     minHeight: Dimensions.get("window").height,
     alignItems: "center",
     width: Dimensions.get("screen").width,
@@ -258,7 +267,7 @@ const Styles = StyleSheet.create({
     position: "absolute",
     top: 0,
     width: Dimensions.get("screen").width,
-    height: 120,
+    height: 70,
     backgroundColor: "#859DFF",
     zIndex: 20,
   },
@@ -283,6 +292,12 @@ const Styles = StyleSheet.create({
     width: 200,
     marginTop: 20,
   },
+  login : {
+    marginTop : 10,
+    color : '#859DFF',
+    fontWeight : "bold",
+    fontSize  : 14
+  }
 });
 
 export default RegisterScreen;

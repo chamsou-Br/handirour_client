@@ -8,17 +8,20 @@ import {
   Dimensions,
   TextInput,
   ScrollView,
-  TouchableOpacity
+  TouchableOpacity,
+  Pressable
 } from "react-native";
 import bg from "../../assets/register1.png";
 import logo from "../../assets/logo.png";
 import axios from "axios";
+import { useNavigation } from "@react-navigation/native";
 
-function LoginScreeen() {
+function LoginScreeen({route}) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [emailErr , setEmailErr] = useState('')
   const [passwordErr , setPasswordErr] = useState("")
+  const navigation = useNavigation()
 
   // login function
   const _onLogin = async() => {
@@ -76,9 +79,18 @@ function LoginScreeen() {
 
           </View>
           <Text style={Styles.TextErr}>{passwordErr}</Text>
-          <TouchableOpacity onPress={()=> _onLogin()} style={Styles.buttonContainer}>
+          <TouchableOpacity 
+         // onPress={()=> _onLogin()} 
+         onPress={()=> route.params.setAuth(true)}
+          style={Styles.buttonContainer}>
             <Text style={Styles.textButton}>Login</Text>
           </TouchableOpacity>
+          <Pressable 
+              onPress={()=> navigation.navigate('RegisterScreen') }
+              
+              >
+          <Text style={Styles.login}>vous n'aves pas un compte !</Text>
+          </Pressable>
         </View>
       </ImageBackground>
     </ScrollView>
@@ -142,6 +154,13 @@ const Styles = StyleSheet.create({
     color  : 'red',
     fontWeight : "600",
     marginLeft : 5
+  },
+  login : {
+    marginTop : 10,
+    color : '#859DFF',
+    fontWeight : "bold",
+    textAlign : "center",
+    fontSize  : 14
   }
 });
 export default LoginScreeen;

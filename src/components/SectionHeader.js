@@ -36,7 +36,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 10,
     borderRadius: 4,
     elevation: 3,
-    backgroundColor: '#3399ff',
+    backgroundColor: '#859DFF',
 
   },
   text: {

@@ -1,24 +1,23 @@
 import { NavigationContainer } from '@react-navigation/native';
-import { StatusBar } from 'native-base';
 import React, { useEffect } from 'react';
 import {createSharedElementStackNavigator} from 'react-navigation-shared-element';
 import HomeScreen from '../screens/HomeScreen';
 import LoginScreeen from '../screens/LoginScreeen';
 import RegisterScreen from '../screens/RegisterScreen';
-import TripDetailsScreen from '../screens/TripDetailsScreen';
-import TabNavigator from './TabNavigator';
 
 const Stack = createSharedElementStackNavigator();
 
-const HomeNavigator = ({isAuth,setAuth}) => {
+const AuthNavigation = ({isAuth,setAuth}) => {
+    
+
+
   return (
-    <NavigationContainer >
-    <StatusBar hidden />
+    <NavigationContainer>
     <Stack.Navigator>
       <Stack.Screen
-        name="Root"
-        initialParams={{isAuth ,setAuth}}
-        component={TabNavigator}
+      initialParams={{isAuth ,setAuth}}
+        name="RegisterScreen"
+        component={RegisterScreen}
         options={{
           headerShown: false,
           useNativeDriver: true,
@@ -26,23 +25,18 @@ const HomeNavigator = ({isAuth,setAuth}) => {
         }}
       />
       <Stack.Screen
-        name="TripDetails"
-        component={TripDetailsScreen}
+      initialParams={{isAuth ,setAuth}}
+        name="LoginScreen"
+        component={LoginScreeen}
         options={{
           headerShown: false,
           useNativeDriver: true,
           gestureEnabled: false,
-          cardStyleInterpolator: ({current: {progress}}) => ({
-            cardStyle: {
-              opacity: progress,
-              backgroundColor: 'transparent'
-            },
-          }),
         }}
       />
-      </Stack.Navigator>
-  </NavigationContainer>
-  )
+    </Stack.Navigator>
+    </NavigationContainer>
+  );
 };
 
-export default HomeNavigator;
+export default AuthNavigation;

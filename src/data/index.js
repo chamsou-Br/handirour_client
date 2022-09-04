@@ -5,7 +5,7 @@ export const TOP_PLACES = [
     title: 'Hotel El Aurassi',
     location: 'Alger',
     description:
-      '20% reduction endicapes',
+      '20% reduction',
     gallery: [
       require('../../assets/images/3722dd4614a5a58f2ec8ebf17c22f76d.jpeg'),
       require('../../assets/images/af933a359582704eee05be198e882be0.jpeg'),
@@ -33,7 +33,7 @@ export const TOP_PLACES = [
     title: 'Hotel Park mall',
     location: 'Setif',
     description:
-      '20% reduction endicapes',
+      '20% reduction',
     gallery: [],
     accibilities: [
       'wifi',
@@ -55,7 +55,7 @@ export const TOP_PLACES = [
     title: 'Hotel Park mall',
     location: 'Constantine',
     description:
-      "30% reduction pour les endicapes",
+      "30% reduction",
     gallery: [],
     accibilities: [
       'wifi',
@@ -188,7 +188,7 @@ export const PLACES = [
     title: 'Park mall',
     location: 'Setif',
     description:
-      '10% reduction pour les endicaps',
+      '10% reduction',
     gallery: [],
     accibilities: [
       'wifi',
@@ -281,3 +281,61 @@ export const CATEGORY = [
   },
 ];
 
+
+
+export const reservation = [
+  {
+    id: 1,
+    client: 'akram',
+    hotel: 'chrea',
+    dateD: '16/06/1111',
+    dateF: '20/3/2002',
+    montant: '60000',
+    status: 'pending'
+  },
+  {
+    id: 1,
+    client: 'akram',
+    hotel: 'chrea',
+    dateD: '16/06/1111',
+    dateF: '20/3/2002',
+    montant: '60000',
+    status: 'pending'
+  },
+  {
+    id: 1,
+    client: 'akram',
+    hotel: 'chrea',
+    dateD: '16/06/1111',
+    dateF: '20/3/2002',
+    montant: '60000',
+    status: 'pending'
+  },
+  {
+    id: 1,
+    client: 'akram',
+    hotel: 'chrea',
+    dateD: '16/06/1111',
+    dateF: '20/3/2002',
+    montant: '60000',
+    status: 'pending'
+  },
+  {
+    id: 1,
+    client: 'akram',
+    hotel: 'chrea',
+    dateD: '16/06/1111',
+    dateF: '20/3/2002',
+    montant: '60000',
+    status: 'pending'
+  },
+  {
+    id: 1,
+    client: 'akram',
+    hotel: 'chrea',
+    dateD: '16/06/1111',
+    dateF: '20/3/2002',
+    montant: '60000',
+    status: 'pending'
+  },
+]

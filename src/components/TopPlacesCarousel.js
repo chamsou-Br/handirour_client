@@ -14,9 +14,6 @@ import {SharedElement} from 'react-navigation-shared-element';
 
 const CARD_WIDTH = sizes.width - 80;
 const CARD_HEIGHT = 200;
-
-// const CARD_WIDTH = sizes.width / 2 - (spacing.l + spacing.l / 2);
-// const CARD_HEIGHT = 220;
 const CARD_WIDTH_SPACING = CARD_WIDTH + spacing.l;
 
 const TopPlacesCarousel = ({list}) => {
@@ -61,10 +58,10 @@ const TopPlacesCarousel = ({list}) => {
 
 const styles = StyleSheet.create({
   card: {
+
     width: CARD_WIDTH,
     height: CARD_HEIGHT,
     marginVertical: 10,
-    backgroundColor: colors.white,
     borderRadius: sizes.radius,
   },
   favorite: {

@@ -36,19 +36,10 @@ const Categories = ({list}) => {
             onPress={() => 
             navigation.navigate('TripDetails', {
                 item,
-            })
-            }
-            >
-            <View>
+            })}>
+            <View style={styles.container}>
                 <Text
-                    style={{ 
-                        padding: 10,
-                        borderWidth: 1,
-                        borderColor: 'black',
-                        fontSize: 19,
-                        margin: 10,
-                        borderRadius: 10,
-                    }}>
+                style={styles.text}>
                 {item.title}
                 </Text>
             </View>
@@ -57,5 +48,21 @@ const Categories = ({list}) => {
         }}
     />
 )};
+const styles = StyleSheet.create({
+    container : {
+        backgroundColor : '#859DFF',
+        margin : 10,
+        width : 100,
+        paddingVertical : 10,
+        borderRadius  :10,
+    },
+    text : {
+        textAlign : 'center',
+        fontSize: 12,
+        letterSpacing : 1.2,
+        fontWeight : 'bold',
+        color : '#FFF',
+    }
+})
 
 export default Categories;

@@ -1,5 +1,5 @@
 import React from 'react';
-import {View, StyleSheet, Text} from 'react-native';
+import {View, StyleSheet, Text, Dimensions} from 'react-native';
 import {colors, sizes, spacing} from '../constants/theme';
 import * as Animatable from 'react-native-animatable';
 import {useNavigation} from '@react-navigation/native';
@@ -17,24 +17,23 @@ const PointFortsCard = ({hotel, acc, acci}) => {
                 // console.log('4', s, accibilities, accibilities.filter(it => it.nom === s), 4);
                 const item = acc.filter(it => it.nom == s)[0]
                 return ( 
-                 <View style={{justifyContent: 'space-around', alignItems: 'center'}}>
+                 <View style={{justifyContent: 'space-around', alignItems: 'center',marginBottom : 15}}>
                     {item ? (
-                         <Icon
+                        <View style={{width : 60,display : 'flex',justifyContent : 'center',borderRadius: 150, height : 60,backgroundColor: '#859DFF',marginHorizontal : 10,padding : 8}}>
+                              <Icon
                             name={item.icon}
-                            size={50}
+                            size={25}
                             style={{
                                 color: 'white',
-                                borderWidth: 0,
-                                borderColor: '#3399ff',
-                                backgroundColor: '#3399ff',
-                                borderRadius: 150,
-                                padding: 8,
-                                margin: 10,
+                                textAlign : 'center'
+
                             }}
                          />
+                        </View>
+                       
                          ) :
                     null}
-                    <Text style={{padding: 2}}>{item.nom}</Text>
+                    <Text style={{fontSize : 12,marginVertical : 2,fontWeight  : "500"}}>{item.nom}</Text>
                 </View>
                 )
             })}

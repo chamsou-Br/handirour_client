@@ -40,9 +40,10 @@ const styles = StyleSheet.create({
   },
   title: {
     padding: 10,
-    fontSize: sizes.h3,
+    fontSize: 16,
+    letterSpacing : 0.8,
     fontWeight: 'bold',
-    color: colors.primary,
+    color: '#000000BB',
   },
 });
 

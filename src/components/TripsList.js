@@ -43,7 +43,7 @@ const TripsList = ({list}) => {
             }}>
             <View style={[styles.card, shadow.dark]}>
               {/* <FavoriteButton style={styles.favorite} /> */}
-              <SharedElement
+              <View
                 id={`trip.${item.id}.image`}
                 style={StyleSheet.absoluteFillObject}><React.Fragment>
                 <View style={styles.imageBox}>
@@ -52,13 +52,14 @@ const TripsList = ({list}) => {
                 <View style={styles.titleBox}>
                 <Text style={styles.title}>{item.title}</Text>
                 <View style={styles.location}>
+                 
+                  <Text style={styles.textLocation}>{item.location}</Text>
                   <Icon
                     name="location-sharp" 
                     onPress={() => {}} 
-                    size={20}
-                    color='#4169e1'
+                    size={14}
+                    color='#859DFF'
                   />
-                  <Text>{item.location}</Text>
                 </View>
                 <View style={styles.body}>
                   <Text style={styles.description}>
@@ -84,7 +85,7 @@ const TripsList = ({list}) => {
                   </Text>
                 </View>
               </View></React.Fragment>
-              </SharedElement>
+              </View>
             </View>
           </TouchableOpacity>
         );
@@ -106,9 +107,10 @@ const styles = StyleSheet.create({
   },
   card: {
     width: CARD_WIDTH,
-    height: CARD_HEIGHT, 
+    minHeight : 240,
     marginVertical: 10,
-    backgroundColor: colors.white,
+    elevation : 2,
+    backgroundColor : "#FFF",
     borderRadius: sizes.radius,
   },
   favorite: {
@@ -135,17 +137,24 @@ const styles = StyleSheet.create({
     right: 5,
   },
   title: {
-    fontSize: sizes.h3,
-    fontWeight: 'bold',
-    color: colors.black,
+    color  : "#000",
+    fontSize : 16,
+    fontWeight : '700',
+    letterSpacing : 1,
+    marginBottom : 2
   },
   location: {
-    fontSize: sizes.h5,
+    fontSize: 10,
     color: colors.black,
     flexDirection: 'row',
   },
+  textLocation : {
+    color  : "#000000CC",
+    fontSize : 12,
+    fontWeight : '600'
+  },
   description: {
-    fontSize: sizes.h5,
+    fontSize: 12,
     color: '#4169e1',
     flexDirection: 'column',
   },

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import ReservationScreen from '../screens/ReservationScreen';
 import ProfileScreen from '../screens/ProfileScreen';
@@ -9,11 +9,12 @@ import HomeNavigator from './HomeNavigator';
 // import { Icon, Rating } from "@rneui/themed";
 import Icon from 'react-native-vector-icons/Ionicons';
 import SettingsScreen from '../screens/SettingsScreen';
+import HomeScreen from '../screens/HomeScreen';
 
 const tabs = [
   {
     name: 'home',
-    screen: HomeNavigator,
+    screen: HomeScreen,
   },
   {
     name: 'bookmark-outline',
@@ -32,8 +33,9 @@ const tabs = [
 const Tab = createBottomTabNavigator();
 
 
-const TabNavigator = () => {
+const TabNavigator = ({route}) => {
   const offsetAnimation = React.useRef(new Animated.Value(0)).current;
+  useEffect(()=>{console.log(route)})
   return (
     <>
       <Tab.Navigator
@@ -45,6 +47,7 @@ const TabNavigator = () => {
         {tabs.map(({name, screen}, index) => {
           return (
             <Tab.Screen
+             initialParams={{setAuth : route.params.setAuth}}
               key={name}
               name={name}
               component={screen}
@@ -56,7 +59,7 @@ const TabNavigator = () => {
                       name={name}
                       size={22}
                       style={{
-                        color: focused ? '#4169e1' : colors.gray,
+                        color: focused ? '#859DFF' : colors.gray,
                       }}
                     />
                   );
@@ -97,7 +100,7 @@ const styles = StyleSheet.create({
     height: 2,
     left: sizes.width / tabs.length / 2 - 5,
     bottom: 8,
-    backgroundColor: '#4169e1',
+    backgroundColor: '#859DFF',
     zIndex: 100,
   },
 });
