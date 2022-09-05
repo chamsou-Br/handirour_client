@@ -76,6 +76,65 @@ export const TOP_PLACES = [
       'wifi',
     ]
   },
+  {
+    id: 4,
+    image: require('../../assets/images/3722dd4614a5a58f2ec8ebf17c22f76d.jpeg') ,
+    title: 'Hotel El Aurassi',
+    location: 'Alger',
+    description:
+      '20% reduction',
+    gallery: [
+      ,
+      require('../../assets/images/2082f59465c39094ce90bebd0fcf8fa7.jpeg'),
+      require('../../assets/images/c68a4484f89d0c087ebdaa43629d2a7a.jpeg'),
+      require('../../assets/images/af933a359582704eee05be198e882be0.jpeg'),
+    ],
+    accibilities: [
+      'wifi',
+      'bus',
+      'cafe',
+      'fastfood',
+      'finger',
+      'fitness',
+      'build',
+      'library',
+    ],
+    points: [
+      'finger',
+      'fitness',
+      'build',
+      'library',
+    ]
+  },
+  {
+    id: 5,
+    image: require('../../assets/images/645d5f28e26c7de2a280f71db15c2141.jpeg'),
+    title: 'Hotel el Aurassi',
+    location: 'Alger',
+    description:
+      "20% reduction",
+    gallery: [
+      require('../../assets/images/4c73f37e70dded978374960fb29360f2.jpeg'),
+      require('../../assets/images/55608c7000bb15d24ee022f3d3f0bf8a.jpeg'),
+      require('../../assets/images/c68a4484f89d0c087ebdaa43629d2a7a.jpeg'),
+    ],
+    accibilities: [
+      'wifi',
+      'bus',
+      'cafe',
+      'fastfood',
+      'finger',
+      'fitness',
+      'build',
+      'library',
+    ],
+    points: [
+      'finger',
+      'fitness',
+      'build',
+      'library',
+    ]
+  },
 ];
 
 export const accibilities = [
@@ -250,6 +309,56 @@ export const PLACES = [
       'finger',
       'fitness',
       'library',
+    ],
+    points: [
+      'finger',
+      'fitness',
+      'build',
+      'library',
+    ]
+  },
+  {
+    id: 5,
+    image: require('../../assets/images/2082f59465c39094ce90bebd0fcf8fa7.jpeg'),
+    title: 'Hotel El Aurassi',
+    location: 'Alger',
+    description:
+      '20% reduction',
+    gallery: [
+      require('../../assets/images/3722dd4614a5a58f2ec8ebf17c22f76d.jpeg'),
+      require('../../assets/images/af933a359582704eee05be198e882be0.jpeg'),
+    ],
+    accibilities: [
+      'wifi',
+      'bus',
+      'cafe',
+      'fastfood',
+      'finger',
+      'fitness',
+      'build',
+      'library',
+    ],
+    points: [
+      'finger',
+      'fitness',
+      'build',
+      'library',
+    ]
+  },
+  {
+    id: 6,
+    image: require('../../assets/images/922a0cb274208ccd234f6c14f2174b8b.jpeg'),
+    title: 'Hotel Park mall',
+    location: 'Setif',
+    description:
+      '20% reduction',
+    gallery: [],
+    accibilities: [
+      'wifi',
+      'cafe',
+      'fastfood',
+      'finger',
+      'fitness',
     ],
     points: [
       'finger',

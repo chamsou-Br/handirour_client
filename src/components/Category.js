@@ -10,6 +10,7 @@ import {
   } from 'react-native';
 import {colors, shadow, sizes, spacing} from '../constants/theme';
 import {useNavigation} from '@react-navigation/native';
+import { PLACES, TOP_PLACES } from '../data';
 
 // const CARD_WIDTH = sizes.width - 80;
 
@@ -34,9 +35,7 @@ const Categories = ({list}) => {
             <TouchableOpacity
             key={index}
             onPress={() => 
-            navigation.navigate('TripDetails', {
-                item,
-            })}>
+                {navigation.navigate("AllTopHotels" ,{slides : [...PLACES,...TOP_PLACES]})}}>
             <View style={styles.container}>
                 <Text
                 style={styles.text}>

@@ -20,17 +20,10 @@ import DateTimePicker from "@react-native-community/datetimepicker";
 const ProfileScreen = ({route}) => {
   const [nom, setnom] = useState("");
   const [prenom, setprenom] = useState("");
-  const [date, setDate] = useState(new Date());
-  const [dateDeNaissance, setDateDenaissance] = useState("");
-  const [genre, setgenre] = useState("Homme");
-  const [wilaya, setWilaya] = useState("Sétif");
   const [email, setemail] = useState("");
   const [password, setpassword] = useState("");
   const [password2, setpassword2] = useState("");
-  const [typeDincapacite, settypeDincapacite] = useState("Mobilité/Physique");
-  const [showDatePicker, setShowDatepicker] = useState(false);
-  const [picture, setPicture] = useState(null);
-  const [path, setPath] = useState("");
+
 
   return (
     <View style={Styles.container}>

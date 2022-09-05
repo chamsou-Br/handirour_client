@@ -8,7 +8,7 @@ import {StyleSheet, Animated} from 'react-native';
 import HomeNavigator from './HomeNavigator';
 // import { Icon, Rating } from "@rneui/themed";
 import Icon from 'react-native-vector-icons/Ionicons';
-import SettingsScreen from '../screens/SettingsScreen';
+import AllHotels from '../screens/AllHotels';
 import HomeScreen from '../screens/HomeScreen';
 
 const tabs = [
@@ -17,6 +17,10 @@ const tabs = [
     screen: HomeScreen,
   },
   {
+    name: 'bed-outline',
+    screen: AllHotels,
+  }, 
+  {
     name: 'bookmark-outline',
     screen: ReservationScreen,
   },
@@ -24,10 +28,7 @@ const tabs = [
     name: 'person',
     screen: ProfileScreen,
   },
-  {
-    name: 'settings-outline',
-    screen: SettingsScreen,
-  }, 
+
 ];
 
 const Tab = createBottomTabNavigator();
@@ -35,7 +36,6 @@ const Tab = createBottomTabNavigator();
 
 const TabNavigator = ({route}) => {
   const offsetAnimation = React.useRef(new Animated.Value(0)).current;
-  useEffect(()=>{console.log(route)})
   return (
     <>
       <Tab.Navigator

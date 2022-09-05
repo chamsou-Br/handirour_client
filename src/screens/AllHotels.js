@@ -1,29 +1,22 @@
-import React, { useEffect, useState }  from 'react';
+import React, { useState }  from 'react';
 import {View, StyleSheet, ScrollView} from 'react-native';
-import {colors, sizes} from '../constants/theme';
-import TopPlacesCarousel from '../components/TopPlacesCarousel';
+import {colors, sizes , spacing , shadow} from '../constants/theme';
 import {PLACES, TOP_PLACES, CATEGORY} from '../data';
-import SectionHeader from '../components/SectionHeader';
-import TripsList from '../components/TripsList';
 import { SearchBar } from '@rneui/themed';
 import Icon from 'react-native-vector-icons/Ionicons';
-import Categories from '../components/Category';
 import { useNavigation } from '@react-navigation/native';
+import TopHotel from '../components/TopHotel';
 
 
-const HomeScreen = ({route}) => {
+const AllHOtels = ({route}) => {
   const [search, setSearch] = useState("");
-  const navigation = useNavigation()
+  const [slides , setSlides] =  useState([...PLACES,...TOP_PLACES])
   
   const updateSearch = () => {
-    navigation.navigate("AllTopHotels" ,
-    {
-      slides : [
-        ...PLACES.filter(place => place.location.includes(search)),
-        ...TOP_PLACES.filter(place => place.location.includes(search))
-      ]
-    }
-      )
+    setSlides([
+      ...PLACES.filter(place => place.location.includes(search)),
+      ...TOP_PLACES.filter(place => place.location.includes(search))
+    ])
   };
 
 
@@ -54,16 +47,15 @@ const HomeScreen = ({route}) => {
        
         <SearchBar
           platform="android"
-          containerStyle={{right: 10, borderRadius: 50, alignSelf: 'center', top: 10, width: sizes.width - 140, height: 50, justifyContent: 'center'}}
+          containerStyle={{right: 10, borderRadius: 50, alignSelf: 'center', width: sizes.width - 140, height: 50, justifyContent: 'center'}}
           inputContainerStyle={{}}  
           inputStyle={{fontSize : 16 }}
           leftIconContainerStyle={{}}
           rightIconContainerStyle={{}}
+          cancelIcon={()=> <></>}
           loadingProps={{}}
-         // onChange={updateSearch}
-         onEndEditing={()=> {updateSearch()} }
-          onClear={()=>setSearch("")}
-          onCancel={() => {setSearch("")}}
+          onEndEditing={()=> {updateSearch()} }
+          onClear={()=>{setSearch("");setSlides([...PLACES,...TOP_PLACES])}}
           onChangeText={newVal => {setSearch(newVal);console.log(newVal)}}
           placeholder="Your distination..."
           placeholderTextColor="#888"
@@ -72,29 +64,14 @@ const HomeScreen = ({route}) => {
           value={search}
         />
       </View>
-      
-
       <ScrollView style={styles.scroll} showsVerticalScrollIndicator={false}>
-        <React.Fragment>
-          <TopPlacesCarousel list={TOP_PLACES} />
-          <Categories list={CATEGORY} />
-          <SectionHeader
-            style={styles.seeAll}
-            title="Top hotels accirding reduction"
-            buttonTitle="See All"
-            onPress={() => {navigation.navigate("AllTopHotels" ,{slides : PLACES})}}
-          />
-          <TripsList list={PLACES.slice(0,4)} />
-
-          <SectionHeader
-            style={styles.seeAll}
-            title="Top hotels accirding rating"
-            buttonTitle="See All"
-            onPress={() => {navigation.navigate("AllTopHotels",{slides : TOP_PLACES})}}
-          />
-          <TripsList list={TOP_PLACES.slice(0,4)} />
-          <View style={{height : 50}}></View>
-        </React.Fragment>
+        <View style={styles.starContainer}>
+            {slides.map((slide,index) => {
+                return(
+                    <TopHotel item={slide} index={index}  />
+                )
+            })}
+        </View>
       </ScrollView>
     </View>
   ); 
@@ -102,13 +79,7 @@ const HomeScreen = ({route}) => {
 
 
 const styles = StyleSheet.create({
-  scroll: {
-    paddingTop : 10,
-    backgroundColor: colors.light,
-    borderTopRightRadius: 30,
-    borderTopLeftRadius: 30,
-    top: 20,
-  },
+
   container: {
     flex: 1,
     backgroundColor: '#859DFF',
@@ -118,16 +89,42 @@ const styles = StyleSheet.create({
     display : 'flex',
     justifyContent: "space-between",
     paddingHorizontal : 15,
-    alignItems : 'center'
+    alignItems : 'center',
+    height : 70,
   },
   iconContainer : {
     display : "flex",
     flexDirection :'row',
     height : 50,
     alignItems : 'center',
-    top : 10,
     justifyContent : "center"
-  }
+  },
+  scroll: {
+    borderTopRightRadius: 30,
+    borderTopLeftRadius: 30,
+    backgroundColor: 'white',
+  },
+  starContainer : {
+    marginBottom : 20,
+    display : 'flex',
+    flex : 2,
+    alignItems : "flex-start",
+    flexWrap :"wrap",
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    top: 5,
+  },
+  backButton: {
+    position: 'absolute',
+    left: spacing.l,
+    zIndex: 1,
+  },
+  backIcon: {
+    top: 20,
+  },
+
 });
 
-export default HomeScreen;
+
+
+export default AllHOtels;
