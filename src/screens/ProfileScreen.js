@@ -16,6 +16,9 @@ import { TouchableOpacity } from "react-native-gesture-handler";
 import * as ImagePicker from "expo-image-picker";
 //import DatePicker from the package we installed
 import DateTimePicker from "@react-native-community/datetimepicker";
+import { PanResponder } from "react-native";
+import { useNavigation } from "@react-navigation/native";
+import { Animated } from "react-native";
 
 const ProfileScreen = ({route}) => {
   const [nom, setnom] = useState("");
@@ -23,10 +26,25 @@ const ProfileScreen = ({route}) => {
   const [email, setemail] = useState("");
   const [password, setpassword] = useState("");
   const [password2, setpassword2] = useState("");
+  const navigation = useNavigation()
 
+  const pan  = PanResponder.create({
+    onStartShouldSetPanResponder : (e,gestureState) => {
+        return true
+    },
+    onPanResponderEnd : (e , gestureState )=> {
+        if(gestureState.dx < 0) {
+           navigation.navigate("home")
+        }
+        if(gestureState.dx > 0) {
+          navigation.navigate("bookmark-outline")
+        }
+        return true
+    }
+})
 
   return (
-    <View style={Styles.container}>
+    <Animated.View {...pan.panHandlers} style={Styles.container}>
       <ScrollView>
         <View style={Styles.formContainer}>
           <View style={Styles.header}>
@@ -143,7 +161,7 @@ const ProfileScreen = ({route}) => {
           </View>
         </View>
       </ScrollView>
-    </View>
+    </Animated.View>
   );
 };
 

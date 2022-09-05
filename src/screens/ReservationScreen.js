@@ -8,14 +8,32 @@ import {colors, shadow, sizes, spacing} from '../constants/theme';
 import { reservation } from '../data';
 import { SearchBar } from '@rneui/themed';
 import { ScrollView } from 'react-native-gesture-handler';
+import { useNavigation } from '@react-navigation/native';
+import { PanResponder } from 'react-native';
 
 const SPACING = 20;
 const AVATAR_SIZE = 70;
 
 const ReservationScreen = ({route}) => {
 
+  const navigation = useNavigation()
+  const pan  = PanResponder.create({
+    onStartShouldSetPanResponder : (e,gestureState) => {
+        return true
+    },
+    onPanResponderEnd : (e , gestureState )=> {
+        if(gestureState.dx < 0) {
+           navigation.navigate("person")
+        }
+        if(gestureState.dx > 0) {
+          navigation.navigate("bed-outline")
+        }
+        return true
+    }
+})
+
   return (
-    <View style={{flex: 1, backgroundColor: '#859DFF'}}>
+    <Animated.View {...pan.panHandlers} style={{flex: 1, backgroundColor: '#859DFF'}}>
       <View style={styles.head}>
         <Icon
             // icon={name}
@@ -46,7 +64,7 @@ const ReservationScreen = ({route}) => {
           })}
         </React.Fragment>
       </ScrollView>
-    </View>
+    </Animated.View>
   );
 };
 

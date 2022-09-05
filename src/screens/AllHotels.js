@@ -6,11 +6,14 @@ import { SearchBar } from '@rneui/themed';
 import Icon from 'react-native-vector-icons/Ionicons';
 import { useNavigation } from '@react-navigation/native';
 import TopHotel from '../components/TopHotel';
+import { PanResponder } from 'react-native';
+import { Animated } from 'react-native';
 
 
 const AllHOtels = ({route}) => {
   const [search, setSearch] = useState("");
   const [slides , setSlides] =  useState([...PLACES,...TOP_PLACES])
+  const navigation  = useNavigation()
   
   const updateSearch = () => {
     setSlides([
@@ -19,9 +22,24 @@ const AllHOtels = ({route}) => {
     ])
   };
 
+  const pan  = PanResponder.create({
+    onStartShouldSetPanResponder : (e,gestureState) => {
+        return true
+    },
+    onPanResponderEnd : (e , gestureState )=> {
+        if(gestureState.dx < 0) {
+           navigation.navigate("bookmark-outline")
+        }
+        if(gestureState.dx > 0) {
+          navigation.navigate("home")
+        }
+        return true
+    }
+})
+
 
   return (
-    <View style={styles.container}>
+    <Animated.View {...pan.panHandlers} style={styles.container}>
       <View style={styles.head}>
         <View style={styles.iconContainer}>
         <Icon
@@ -73,7 +91,7 @@ const AllHOtels = ({route}) => {
             })}
         </View>
       </ScrollView>
-    </View>
+    </Animated.View>
   ); 
 };
 

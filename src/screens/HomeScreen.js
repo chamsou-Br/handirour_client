@@ -9,6 +9,8 @@ import { SearchBar } from '@rneui/themed';
 import Icon from 'react-native-vector-icons/Ionicons';
 import Categories from '../components/Category';
 import { useNavigation } from '@react-navigation/native';
+import { PanResponder } from 'react-native';
+import { Animated } from 'react-native';
 
 
 const HomeScreen = ({route}) => {
@@ -27,8 +29,22 @@ const HomeScreen = ({route}) => {
   };
 
 
+  const pan  = PanResponder.create({
+    onStartShouldSetPanResponder : (e,gestureState) => {
+        return true
+    },
+    onPanResponderEnd : (e , gestureState )=> {
+        if(gestureState.dx < 0) {
+           navigation.navigate("bed-outline")
+        }
+        if(gestureState.dx > 0) {
+          navigation.navigate("person")
+        }
+        return true
+    }
+})
   return (
-    <View style={styles.container}>
+    <Animated.View {...pan.panHandlers} style={styles.container}>
       <View style={styles.head}>
         <View style={styles.iconContainer}>
         <Icon
@@ -96,7 +112,7 @@ const HomeScreen = ({route}) => {
           <View style={{height : 50}}></View>
         </React.Fragment>
       </ScrollView>
-    </View>
+    </Animated.View>
   ); 
 };
 
